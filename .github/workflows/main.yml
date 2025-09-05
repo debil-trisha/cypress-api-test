@@ -41,7 +41,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: ${{ matrix.browser }}
-          command: npx cypress run --browser ${{ matrix.browser }} --headed --no-sandbox --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
+          command: npx cypress run --browser ${{ matrix.browser }} --no-sandbox --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
 
         env:
           CYPRESS_BROWSER_PATH: /usr/bin/microsoft-edge-stable
