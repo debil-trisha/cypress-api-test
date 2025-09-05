@@ -26,6 +26,21 @@ jobs:
           sudo apt update
           sudo apt install -y microsoft-edge-stable
 
+      - name: Install dependencies for browsers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libgtk2.0-0 \
+            libgtk-3-0 \
+            libgbm-dev \
+            libnotify-dev \
+            libgconf-2-4 \
+            libnss3 \
+            libxss1 \
+            libasound2 \
+            xvfb
+
+
       # Install Node dependencies
       - name: Install dependencies
         run: npm ci
@@ -41,7 +56,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: ${{ matrix.browser }}
-          command: npx cypress run --browser ${{ matrix.browser }} --no-sandbox --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
+          command: npx cypress run --browser ${{ matrix.browser }} --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
 
         env:
           CYPRESS_BROWSER_PATH: /usr/bin/microsoft-edge-stable
