@@ -54,10 +54,14 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: ${{ matrix.browser }}
-          command: npx cypress run --browser ${{ matrix.browser }} --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
+          # command: npx cypress run --browser ${{ matrix.browser }} --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
 
+      - name: Run Cypress tests with Xvfb
+        run: |
+          xvfb-run --auto-servernum --server-args='-screen 0 1280x720x24' \
+          npx cypress run --browser ${{ matrix.browser }} --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
         env:
-          CYPRESS_BROWSER_PATH: /usr/bin/microsoft-edge-stable
+          CYPRESS_BROWSER_PATH: ${{ matrix.browser == 'edge' && '/usr/bin/microsoft-edge-stable' || '' }}
 
 
       # Merge Mochawesome Reports
