@@ -31,7 +31,7 @@ jobs:
       - name: Upload HTML Report
         uses: actions/upload-artifact@v4
         with:
-          name: Cypress HTML Report ${{ matrix.browser }}
-          path: cypress/reports/${{ matrix.browser }}
-        #   build: npm run build
-        #   start: npm start
+          # name: Cypress HTML Report ${{ matrix.browser }}
+          # path: cypress/reports/${{ matrix.browser }}
+          build: npm run build
+          start: npm start

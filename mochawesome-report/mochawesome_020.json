@@ -1,0 +1,242 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 6,
+    "passes": 5,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-09-04T17:25:43.765Z",
+    "end": "2025-09-04T17:25:44.778Z",
+    "duration": 1013,
+    "testsRegistered": 6,
+    "passPercent": 83.33333333333334,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b35a2d03-8175-40ed-b375-4b74c3dc1630",
+      "title": "",
+      "fullFile": "cypress\\e2e\\API-TEST\\INTERNAL_TRANSACTION\\cash-in.cy.js",
+      "file": "cypress\\e2e\\API-TEST\\INTERNAL_TRANSACTION\\cash-in.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "be8d4008-abce-44db-875f-2d666e997c96",
+          "title": "CASH IN API Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "ddb1c14b-9592-4767-86a2-d2254c51eb7b",
+              "title": "Successful cashin transaction",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should process cashin transaction and return success response",
+                  "fullTitle": "CASH IN API Tests Successful cashin transaction should process cashin transaction and return success response",
+                  "timedOut": null,
+                  "duration": 354,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: requestBody,\n  headers: {\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  // Validate response status\n  expect(response.status).to.equal(200);\n  // Validate response structure\n  const responseSchema = {\n    title: 'Cash Transfer Response Schema',\n    type: 'object',\n    required: ['command-id', 'trans-id', 'request-id', 'status', 'message'],\n    properties: {\n      'command-id': {\n        type: 'string'\n      },\n      'trans-id': {\n        type: 'string'\n      },\n      'request-id': {\n        type: 'string'\n      },\n      'status': {\n        type: 'integer'\n      },\n      'message': {\n        type: 'string'\n      }\n    }\n  };\n  expect(response.body).to.be.jsonSchema(responseSchema);\n  // Validate response values\n  expect(response.body['command-id']).to.equal('CSIN');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(0);\n  expect(response.body['trans-id']).to.match(/^CSIN\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  expect(response.body.message).to.contains('Vous avez envoye');\n});",
+                  "err": {
+                    "message": "AssertionError: expected 5 to equal 0",
+                    "estack": "AssertionError: expected 5 to equal 0\n    at Context.eval (webpack://cypess-api-test/./cypress/e2e/API-TEST/INTERNAL_TRANSACTION/cash-in.cy.js:57:48)\n    at getRet (http://localhost:58381/__cypress/runner/cypress_runner.js:121549:20)\n    at tryCatcher (http://localhost:58381/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:58381/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:58381/__cypress/runner/cypress_runner.js:121560:66)\n    at Context.then (http://localhost:58381/__cypress/runner/cypress_runner.js:121811:21)",
+                    "diff": null
+                  },
+                  "uuid": "bc41f53e-1ba9-4797-846d-5860f53f67eb",
+                  "parentUUID": "ddb1c14b-9592-4767-86a2-d2254c51eb7b",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "bc41f53e-1ba9-4797-846d-5860f53f67eb"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 354,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "8e515bd9-1117-444f-a7c0-edceaaca2fd2",
+              "title": "Failed response",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should return 404 for invalid endpoint",
+                  "fullTitle": "CASH IN API Tests Failed response should return 404 for invalid endpoint",
+                  "timedOut": null,
+                  "duration": 69,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: invalidEndpoint,\n  body: requestBody,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  // Verify Not Found response\n  expect(response.status).to.equal(404);\n});",
+                  "err": {},
+                  "uuid": "e29cc487-1a16-4693-adb3-c0bb1f1ffd2e",
+                  "parentUUID": "8e515bd9-1117-444f-a7c0-edceaaca2fd2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return invalid PIN message",
+                  "fullTitle": "CASH IN API Tests Failed response should return invalid PIN message",
+                  "timedOut": null,
+                  "duration": 115,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const invalidPINBody = {\n  \"request-id\": randomId,\n  \"command-id\": \"CSIN\",\n  \"sender\": \"2250142373758\",\n  \"destination\": \"2250102919300\",\n  \"auth\": \"1234\",\n  //invalid PIN\n  \"amount\": \"1200\",\n  \"remarks\": \"\",\n  \"extended-data\": {\n    \"lang\": \"F\",\n    \"cellid\": \"\"\n  }\n};\ncy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: invalidPINBody,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body['command-id']).to.equal('CSIN');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(8);\n  expect(response.body['trans-id']).to.match(/^CSIN\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  // Validate message content\n  const invalidPINmessage = [\"Le code secret que vous avez saisi est errone,veuillez reessayer svp ou  RDV avec votre piece d'identite dans l'agence Moov la plus proche pour le reinitialiser.\"];\n  invalidPINmessage.forEach(part => {\n    expect(response.body.message).to.include(part);\n  });\n});",
+                  "err": {},
+                  "uuid": "0d04860c-4efc-4cc8-b34e-e102a9c1e4ee",
+                  "parentUUID": "8e515bd9-1117-444f-a7c0-edceaaca2fd2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return invalid destination number message",
+                  "fullTitle": "CASH IN API Tests Failed response should return invalid destination number message",
+                  "timedOut": null,
+                  "duration": 129,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const invalidDestinationNumberBody = {\n  \"request-id\": randomId,\n  \"command-id\": \"CSIN\",\n  \"sender\": \"2250142373758\",\n  \"destination\": \"invalid_destination\",\n  //invalid destination number\n  \"auth\": \"2222\",\n  \"amount\": \"1200\",\n  \"remarks\": \"\",\n  \"extended-data\": {\n    \"lang\": \"F\",\n    \"cellid\": \"\"\n  }\n};\ncy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: invalidDestinationNumberBody,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body['command-id']).to.equal('CSIN');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(3);\n  expect(response.body['trans-id']).to.match(/^CSIN\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  // Validate message content\n  const invalidDestinationNumberMESSAGE = [\"Le numero que vous avez entre n'est pas valide. Merci de verifier et reessayer svp . \"];\n  invalidDestinationNumberMESSAGE.forEach(part => {\n    expect(response.body.message).to.include(part);\n  });\n});",
+                  "err": {},
+                  "uuid": "8b760593-6e5d-48c1-aeec-3fbd0f87ffa4",
+                  "parentUUID": "8e515bd9-1117-444f-a7c0-edceaaca2fd2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return invalid sender number message",
+                  "fullTitle": "CASH IN API Tests Failed response should return invalid sender number message",
+                  "timedOut": null,
+                  "duration": 102,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const invalidsenderNumberBody = {\n  \"request-id\": randomId,\n  \"command-id\": \"CSIN\",\n  \"sender\": \"invalid_sender\",\n  //invalid sender number\n  \"destination\": \"2250102919300\",\n  \"auth\": \"2222\",\n  \"amount\": \"1233\",\n  \"remarks\": \"\",\n  \"extended-data\": {\n    \"lang\": \"F\",\n    \"cellid\": \"\"\n  }\n};\ncy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: invalidsenderNumberBody,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body['command-id']).to.equal('CSIN');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(4);\n  expect(response.body['trans-id']).to.match(/^CSIN\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  // Validate message content\n  const invalidSenderNumberMESSAGE = [\"Desole, vous n'etes pas autorise a effectuer cette transaction.\"];\n  invalidSenderNumberMESSAGE.forEach(part => {\n    expect(response.body.message).to.include(part);\n  });\n});",
+                  "err": {},
+                  "uuid": "c3fe5025-30e3-4d0d-9fa3-37f33102eee2",
+                  "parentUUID": "8e515bd9-1117-444f-a7c0-edceaaca2fd2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return not authorized sender number message",
+                  "fullTitle": "CASH IN API Tests Failed response should return not authorized sender number message",
+                  "timedOut": null,
+                  "duration": 122,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const notAuthorizedsender = {\n  \"request-id\": randomId,\n  \"command-id\": \"CSIN\",\n  \"sender\": \"2250142373758\",\n  //not authorized sender number\n  \"destination\": \"2250102919300\",\n  \"auth\": \"2222\",\n  \"amount\": \"1233\",\n  \"remarks\": \"\",\n  \"extended-data\": {\n    \"lang\": \"F\",\n    \"cellid\": \"\"\n  }\n};\ncy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: notAuthorizedsender,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body['command-id']).to.equal('CSIN');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(5);\n  expect(response.body['trans-id']).to.match(/^CSIN\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  // Validate message content\n  const invalidSenderNumberMESSAGE = [\"Desole, vous n'etes pas autorise a effectuer cette transaction.\"];\n  invalidSenderNumberMESSAGE.forEach(part => {\n    expect(response.body.message).to.include(part);\n  });\n});",
+                  "err": {},
+                  "uuid": "12bfd0e1-b2bc-46eb-8332-2a1815ab42f1",
+                  "parentUUID": "8e515bd9-1117-444f-a7c0-edceaaca2fd2",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "e29cc487-1a16-4693-adb3-c0bb1f1ffd2e",
+                "0d04860c-4efc-4cc8-b34e-e102a9c1e4ee",
+                "8b760593-6e5d-48c1-aeec-3fbd0f87ffa4",
+                "c3fe5025-30e3-4d0d-9fa3-37f33102eee2",
+                "12bfd0e1-b2bc-46eb-8332-2a1815ab42f1"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 537,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

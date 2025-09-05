@@ -1,0 +1,354 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 10,
+    "passes": 0,
+    "pending": 0,
+    "failures": 10,
+    "start": "2025-09-04T17:23:59.041Z",
+    "end": "2025-09-04T17:24:06.716Z",
+    "duration": 7675,
+    "testsRegistered": 10,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "99b5f6d0-ff17-4595-aa2f-f6e01359a51c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\API-TEST\\INTERNET_BUNDLE\\compte_illimite.cy.js",
+      "file": "cypress\\e2e\\API-TEST\\INTERNET_BUNDLE\\compte_illimite.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2365860e-4c46-4a47-9d70-39ac2590e68e",
+          "title": "COMPTE MOOV ILLIMITE API Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "85942941-afe5-4f3b-9a06-cef6b45bca45",
+              "title": "Successful COMPTE MOOV ILLIMITE",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should process COMPTE MOOV ILLIMITE for self and return success response",
+                  "fullTitle": "COMPTE MOOV ILLIMITE API Tests Successful COMPTE MOOV ILLIMITE should process COMPTE MOOV ILLIMITE for self and return success response",
+                  "timedOut": null,
+                  "duration": 729,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: requestBodyforSelf,\n  headers: {\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  // Validate response status\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.jsonSchema(responseSchema);\n  // Validate response values\n  expect(response.body['command-id']).to.equal('BILL');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(0);\n  expect(response.body['trans-id']).to.match(/^BILL\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  expect(response.body.message).to.contains('Débit de');\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:136280:70)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:4173:37)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57707/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:57707/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:57707/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:57707/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:57707/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:57707/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypess-api-test/./cypress/e2e/API-TEST/INTERNET_BUNDLE/compte_illimite.cy.js:73:15)\n\nFrom Node.js Internals:\n  RequestError: Error: connect ECONNREFUSED 127.0.0.1:8881\n      at new r (<embedded>:227:402397)\n      at ee.callback (<embedded>:227:408398)\n      at e.callback.s.callback [as _callback] (<embedded>:227:407844)\n      at s._callback.s.callback.s.callback (<embedded>:290:107368)\n      at ee.emit (node:events:518:28)\n      at ee.onRequestError (<embedded>:290:116310)\n      at ClientRequest.emit (node:events:530:35)\n      at emitErrorEvent (node:_http_client:104:11)\n      at Socket.socketErrorListener (node:_http_client:518:5)\n      at Socket.emit (node:events:518:28)\n      at emitErrorNT (node:internal/streams/destroy:170:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+                    "diff": null
+                  },
+                  "uuid": "5e77617e-a19f-4dc5-9efb-a367302ed565",
+                  "parentUUID": "85942941-afe5-4f3b-9a06-cef6b45bca45",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should process COMPTE MOOV ILLIMITE for others and return success response",
+                  "fullTitle": "COMPTE MOOV ILLIMITE API Tests Successful COMPTE MOOV ILLIMITE should process COMPTE MOOV ILLIMITE for others and return success response",
+                  "timedOut": null,
+                  "duration": 716,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: requestBodyforOthers,\n  headers: {\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  // Validate response status\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.jsonSchema(responseSchema);\n  // Validate response values\n  expect(response.body['command-id']).to.equal('BILL');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(0);\n  expect(response.body['trans-id']).to.match(/^BILL\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  expect(response.body.message).to.contains('Débit de');\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:136280:70)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:4173:37)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57707/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:57707/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:57707/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:57707/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:57707/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:57707/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypess-api-test/./cypress/e2e/API-TEST/INTERNET_BUNDLE/compte_illimite.cy.js:95:15)\n\nFrom Node.js Internals:\n  RequestError: Error: connect ECONNREFUSED 127.0.0.1:8881\n      at new r (<embedded>:227:402397)\n      at ee.callback (<embedded>:227:408398)\n      at e.callback.s.callback [as _callback] (<embedded>:227:407844)\n      at s._callback.s.callback.s.callback (<embedded>:290:107368)\n      at ee.emit (node:events:518:28)\n      at ee.onRequestError (<embedded>:290:116310)\n      at ClientRequest.emit (node:events:530:35)\n      at emitErrorEvent (node:_http_client:104:11)\n      at Socket.socketErrorListener (node:_http_client:518:5)\n      at Socket.emit (node:events:518:28)\n      at emitErrorNT (node:internal/streams/destroy:170:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+                    "diff": null
+                  },
+                  "uuid": "cf239814-9dd5-48cb-9c58-0eb2d9591652",
+                  "parentUUID": "85942941-afe5-4f3b-9a06-cef6b45bca45",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "5e77617e-a19f-4dc5-9efb-a367302ed565",
+                "cf239814-9dd5-48cb-9c58-0eb2d9591652"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 1445,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "2ca2ced8-113f-4411-8135-68406c575969",
+              "title": "Failed response",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should return 404 for invalid endpoint",
+                  "fullTitle": "COMPTE MOOV ILLIMITE API Tests Failed response should return 404 for invalid endpoint",
+                  "timedOut": null,
+                  "duration": 714,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: invalidEndpoint,\n  body: requestBodyforSelf,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  // Verify Not Found response\n  expect(response.status).to.equal(404);\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:136280:70)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:4173:37)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57707/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:57707/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:57707/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:57707/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:57707/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:57707/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypess-api-test/./cypress/e2e/API-TEST/INTERNET_BUNDLE/compte_illimite.cy.js:119:15)\n\nFrom Node.js Internals:\n  RequestError: Error: connect ECONNREFUSED 127.0.0.1:8881\n      at new r (<embedded>:227:402397)\n      at ee.callback (<embedded>:227:408398)\n      at e.callback.s.callback [as _callback] (<embedded>:227:407844)\n      at s._callback.s.callback.s.callback (<embedded>:290:107368)\n      at ee.emit (node:events:518:28)\n      at ee.onRequestError (<embedded>:290:116310)\n      at ClientRequest.emit (node:events:530:35)\n      at emitErrorEvent (node:_http_client:104:11)\n      at Socket.socketErrorListener (node:_http_client:518:5)\n      at Socket.emit (node:events:518:28)\n      at emitErrorNT (node:internal/streams/destroy:170:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+                    "diff": null
+                  },
+                  "uuid": "18853d27-40de-4f78-a056-66691a8bb51e",
+                  "parentUUID": "2ca2ced8-113f-4411-8135-68406c575969",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return 404 for invalid endpoint",
+                  "fullTitle": "COMPTE MOOV ILLIMITE API Tests Failed response should return 404 for invalid endpoint",
+                  "timedOut": null,
+                  "duration": 706,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: invalidEndpoint,\n  body: requestBodyforOthers,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  // Verify Not Found response\n  expect(response.status).to.equal(404);\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:136280:70)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:4173:37)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57707/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:57707/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:57707/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:57707/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:57707/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:57707/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypess-api-test/./cypress/e2e/API-TEST/INTERNET_BUNDLE/compte_illimite.cy.js:134:15)\n\nFrom Node.js Internals:\n  RequestError: Error: connect ECONNREFUSED 127.0.0.1:8881\n      at new r (<embedded>:227:402397)\n      at ee.callback (<embedded>:227:408398)\n      at e.callback.s.callback [as _callback] (<embedded>:227:407844)\n      at s._callback.s.callback.s.callback (<embedded>:290:107368)\n      at ee.emit (node:events:518:28)\n      at ee.onRequestError (<embedded>:290:116310)\n      at ClientRequest.emit (node:events:530:35)\n      at emitErrorEvent (node:_http_client:104:11)\n      at Socket.socketErrorListener (node:_http_client:518:5)\n      at Socket.emit (node:events:518:28)\n      at emitErrorNT (node:internal/streams/destroy:170:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+                    "diff": null
+                  },
+                  "uuid": "a75f42b8-5576-4498-92c0-8a1423c5fb66",
+                  "parentUUID": "2ca2ced8-113f-4411-8135-68406c575969",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return invalid PIN message (SELF)",
+                  "fullTitle": "COMPTE MOOV ILLIMITE API Tests Failed response should return invalid PIN message (SELF)",
+                  "timedOut": null,
+                  "duration": 764,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: invalidPINBodySELF,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.jsonSchema(responseSchema);\n  expect(response.body['command-id']).to.equal('BILL');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(8);\n  expect(response.body['trans-id']).to.match(/^BILL\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  invalidPINmessage.forEach(part => {\n    expect(response.body.message).to.include(part);\n  });\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:136280:70)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:4173:37)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57707/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:57707/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:57707/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:57707/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:57707/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:57707/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypess-api-test/./cypress/e2e/API-TEST/INTERNET_BUNDLE/compte_illimite.cy.js:200:15)\n\nFrom Node.js Internals:\n  RequestError: Error: connect ECONNREFUSED 127.0.0.1:8881\n      at new r (<embedded>:227:402397)\n      at ee.callback (<embedded>:227:408398)\n      at e.callback.s.callback [as _callback] (<embedded>:227:407844)\n      at s._callback.s.callback.s.callback (<embedded>:290:107368)\n      at ee.emit (node:events:518:28)\n      at ee.onRequestError (<embedded>:290:116310)\n      at ClientRequest.emit (node:events:530:35)\n      at emitErrorEvent (node:_http_client:104:11)\n      at Socket.socketErrorListener (node:_http_client:518:5)\n      at Socket.emit (node:events:518:28)\n      at emitErrorNT (node:internal/streams/destroy:170:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+                    "diff": null
+                  },
+                  "uuid": "21d23e24-a91b-40ea-b61e-e2caa8bbce96",
+                  "parentUUID": "2ca2ced8-113f-4411-8135-68406c575969",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return invalid PIN message (OTHERS)",
+                  "fullTitle": "COMPTE MOOV ILLIMITE API Tests Failed response should return invalid PIN message (OTHERS)",
+                  "timedOut": null,
+                  "duration": 716,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: invalidPINBodyOTHERS,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.jsonSchema(responseSchema);\n  expect(response.body['command-id']).to.equal('BILL');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(8);\n  expect(response.body['trans-id']).to.match(/^BILL\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  invalidPINmessage.forEach(part => {\n    expect(response.body.message).to.include(part);\n  });\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:136280:70)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:4173:37)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57707/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:57707/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:57707/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:57707/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:57707/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:57707/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypess-api-test/./cypress/e2e/API-TEST/INTERNET_BUNDLE/compte_illimite.cy.js:223:15)\n\nFrom Node.js Internals:\n  RequestError: Error: connect ECONNREFUSED 127.0.0.1:8881\n      at new r (<embedded>:227:402397)\n      at ee.callback (<embedded>:227:408398)\n      at e.callback.s.callback [as _callback] (<embedded>:227:407844)\n      at s._callback.s.callback.s.callback (<embedded>:290:107368)\n      at ee.emit (node:events:518:28)\n      at ee.onRequestError (<embedded>:290:116310)\n      at ClientRequest.emit (node:events:530:35)\n      at emitErrorEvent (node:_http_client:104:11)\n      at Socket.socketErrorListener (node:_http_client:518:5)\n      at Socket.emit (node:events:518:28)\n      at emitErrorNT (node:internal/streams/destroy:170:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+                    "diff": null
+                  },
+                  "uuid": "2ecd56c0-3a33-4b26-bbf4-17ec33556844",
+                  "parentUUID": "2ca2ced8-113f-4411-8135-68406c575969",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return not authorized destination number message (SELF)",
+                  "fullTitle": "COMPTE MOOV ILLIMITE API Tests Failed response should return not authorized destination number message (SELF)",
+                  "timedOut": null,
+                  "duration": 730,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: notAuthorizedNumberBodySELF,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.jsonSchema(responseSchema);\n  expect(response.body['command-id']).to.equal('BILL');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(51);\n  expect(response.body['trans-id']).to.match(/^BILL\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  notAuthorizedNumMESSAGE.forEach(part => {\n    expect(response.body.message).to.include(part);\n  });\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:136280:70)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:4173:37)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57707/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:57707/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:57707/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:57707/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:57707/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:57707/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypess-api-test/./cypress/e2e/API-TEST/INTERNET_BUNDLE/compte_illimite.cy.js:297:15)\n\nFrom Node.js Internals:\n  RequestError: Error: connect ECONNREFUSED 127.0.0.1:8881\n      at new r (<embedded>:227:402397)\n      at ee.callback (<embedded>:227:408398)\n      at e.callback.s.callback [as _callback] (<embedded>:227:407844)\n      at s._callback.s.callback.s.callback (<embedded>:290:107368)\n      at ee.emit (node:events:518:28)\n      at ee.onRequestError (<embedded>:290:116310)\n      at ClientRequest.emit (node:events:530:35)\n      at emitErrorEvent (node:_http_client:104:11)\n      at Socket.socketErrorListener (node:_http_client:518:5)\n      at Socket.emit (node:events:518:28)\n      at emitErrorNT (node:internal/streams/destroy:170:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+                    "diff": null
+                  },
+                  "uuid": "1c393f41-9388-423e-9fa7-9aabb155d1d0",
+                  "parentUUID": "2ca2ced8-113f-4411-8135-68406c575969",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return not authorized destination number message (OTHERS)",
+                  "fullTitle": "COMPTE MOOV ILLIMITE API Tests Failed response should return not authorized destination number message (OTHERS)",
+                  "timedOut": null,
+                  "duration": 718,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: notAuthorizedNumberBodyOTHERS,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.jsonSchema(responseSchema);\n  expect(response.body['command-id']).to.equal('BILL');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(51);\n  expect(response.body['trans-id']).to.match(/^BILL\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  notAuthorizedNumMESSAGE.forEach(part => {\n    expect(response.body.message).to.include(part);\n  });\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:136280:70)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:4173:37)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57707/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:57707/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:57707/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:57707/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:57707/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:57707/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypess-api-test/./cypress/e2e/API-TEST/INTERNET_BUNDLE/compte_illimite.cy.js:320:15)\n\nFrom Node.js Internals:\n  RequestError: Error: connect ECONNREFUSED 127.0.0.1:8881\n      at new r (<embedded>:227:402397)\n      at ee.callback (<embedded>:227:408398)\n      at e.callback.s.callback [as _callback] (<embedded>:227:407844)\n      at s._callback.s.callback.s.callback (<embedded>:290:107368)\n      at ee.emit (node:events:518:28)\n      at ee.onRequestError (<embedded>:290:116310)\n      at ClientRequest.emit (node:events:530:35)\n      at emitErrorEvent (node:_http_client:104:11)\n      at Socket.socketErrorListener (node:_http_client:518:5)\n      at Socket.emit (node:events:518:28)\n      at emitErrorNT (node:internal/streams/destroy:170:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+                    "diff": null
+                  },
+                  "uuid": "ef80fc26-e81e-4ee6-adb0-28772a455979",
+                  "parentUUID": "2ca2ced8-113f-4411-8135-68406c575969",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return not authorized sender number message (SELF)",
+                  "fullTitle": "COMPTE MOOV ILLIMITE API Tests Failed response should return not authorized sender number message (SELF)",
+                  "timedOut": null,
+                  "duration": 707,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: notAuthorizedSenderNumBodySELF,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.jsonSchema(responseSchema);\n  expect(response.body['command-id']).to.equal('BILL');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(4);\n  expect(response.body['trans-id']).to.match(/^BILL\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  notAuthorizedSenderNumMESSAGE.forEach(part => {\n    expect(response.body.message).to.include(part);\n  });\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:136280:70)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:4173:37)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57707/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:57707/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:57707/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:57707/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:57707/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:57707/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypess-api-test/./cypress/e2e/API-TEST/INTERNET_BUNDLE/compte_illimite.cy.js:394:15)\n\nFrom Node.js Internals:\n  RequestError: Error: connect ECONNREFUSED 127.0.0.1:8881\n      at new r (<embedded>:227:402397)\n      at ee.callback (<embedded>:227:408398)\n      at e.callback.s.callback [as _callback] (<embedded>:227:407844)\n      at s._callback.s.callback.s.callback (<embedded>:290:107368)\n      at ee.emit (node:events:518:28)\n      at ee.onRequestError (<embedded>:290:116310)\n      at ClientRequest.emit (node:events:530:35)\n      at emitErrorEvent (node:_http_client:104:11)\n      at Socket.socketErrorListener (node:_http_client:518:5)\n      at Socket.emit (node:events:518:28)\n      at emitErrorNT (node:internal/streams/destroy:170:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+                    "diff": null
+                  },
+                  "uuid": "a7bb8e17-d6a2-48bc-b62a-f2e74e27d3ae",
+                  "parentUUID": "2ca2ced8-113f-4411-8135-68406c575969",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return not authorized sender number message (OTHERS)",
+                  "fullTitle": "COMPTE MOOV ILLIMITE API Tests Failed response should return not authorized sender number message (OTHERS)",
+                  "timedOut": null,
+                  "duration": 724,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: validEndpoint,\n  body: notAuthorizedSenderNumBodyOTHERS,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.jsonSchema(responseSchema);\n  expect(response.body['command-id']).to.equal('BILL');\n  expect(response.body['request-id']).to.equal(randomId);\n  expect(response.body.status).to.equal(4);\n  expect(response.body['trans-id']).to.match(/^BILL\\d{6}\\.\\d{4}\\.R\\d{5}$/);\n  notAuthorizedSenderNumMESSAGE.forEach(part => {\n    expect(response.body.message).to.include(part);\n  });\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttp://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:8881\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:136280:70)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (http://localhost:57707/__cypress/runner/cypress_runner.js:4173:37)\n    at tryCatcher (http://localhost:57707/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57707/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:57707/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:57707/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:57707/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:57707/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:57707/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:57707/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypess-api-test/./cypress/e2e/API-TEST/INTERNET_BUNDLE/compte_illimite.cy.js:417:15)\n\nFrom Node.js Internals:\n  RequestError: Error: connect ECONNREFUSED 127.0.0.1:8881\n      at new r (<embedded>:227:402397)\n      at ee.callback (<embedded>:227:408398)\n      at e.callback.s.callback [as _callback] (<embedded>:227:407844)\n      at s._callback.s.callback.s.callback (<embedded>:290:107368)\n      at ee.emit (node:events:518:28)\n      at ee.onRequestError (<embedded>:290:116310)\n      at ClientRequest.emit (node:events:530:35)\n      at emitErrorEvent (node:_http_client:104:11)\n      at Socket.socketErrorListener (node:_http_client:518:5)\n      at Socket.emit (node:events:518:28)\n      at emitErrorNT (node:internal/streams/destroy:170:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+                    "diff": null
+                  },
+                  "uuid": "60935b03-8ec7-431a-bcbc-822618af7056",
+                  "parentUUID": "2ca2ced8-113f-4411-8135-68406c575969",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "18853d27-40de-4f78-a056-66691a8bb51e",
+                "a75f42b8-5576-4498-92c0-8a1423c5fb66",
+                "21d23e24-a91b-40ea-b61e-e2caa8bbce96",
+                "2ecd56c0-3a33-4b26-bbf4-17ec33556844",
+                "1c393f41-9388-423e-9fa7-9aabb155d1d0",
+                "ef80fc26-e81e-4ee6-adb0-28772a455979",
+                "a7bb8e17-d6a2-48bc-b62a-f2e74e27d3ae",
+                "60935b03-8ec7-431a-bcbc-822618af7056"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 5779,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
