@@ -34,11 +34,7 @@ jobs:
       - name: Cypress info (browser check)
         run: npx cypress info
 
-      - name: Start backend server
-        run: npm run start-backend &
-
-      - name: Wait for backend
-        run: npx wait-on http://127.0.0.1:8881/Prod_200_AppManagerWildFly21/gateway/transaction
+      
 
       # Run Cypress tests
       - name: Cypress run in ${{ matrix.browser }}
@@ -46,6 +42,10 @@ jobs:
         with:
           browser: ${{ matrix.browser }}
           command: npx cypress run --browser ${{ matrix.browser }} --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
+
+        env:
+          CYPRESS_BROWSER_PATH: /usr/bin/microsoft-edge-stable
+
 
       # Merge Mochawesome Reports
       - name: Merge Mochawesome Reports
