@@ -18,10 +18,9 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Run Cypress
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-            command: npx cypress run
-            browser: chrome
+          start: npm run start:test
