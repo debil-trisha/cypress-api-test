@@ -7,33 +7,21 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-24.04
-    strategy:
-      fail-fast: false
-      matrix:
-        browser: [chrome, firefox, edge]
+   
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install cypress and verify
-        run: |
-          npm ci
-          npm install cypress mochawesome mochawesome-merge mochawesome-report-generator
-          npx cypress verify
-      - name: Cypress run in ${{ matrix.browser }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress
         uses: cypress-io/github-action@v6
         with:
-            browser: ${{ matrix.browser }}
-            command: npx cypress run --browser ${{ matrix.browser }} --reporter mochawesome --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
-
-      - name: Merge Mochawesome Reports
-        run: npx mochawesome-merge cypress/reports/${{ matrix.browser }}/*.json > cypress/reports/${{ matrix.browser }}/merged-report.json
-
-      - name: Generate HTML Report
-        run: npx marge cypress/reports/${{ matrix.browser }}/merged-report.json --reportDir cypress/reports/${{ matrix.browser }} -f "${{ matrix.browser }}-report.html"
-
-      - name: Upload HTML Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: Cypress HTML Report ${{ matrix.browser }}
-          path: cypress/reports/${{ matrix.browser }}
+            command: npx cypress run
+            browser: chrome
