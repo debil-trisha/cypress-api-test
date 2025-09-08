@@ -1,78 +1,31 @@
 name: Cypress Tests
 
-on:
+on: 
   push:
   workflow_dispatch:
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
         browser: [chrome, firefox, edge]
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      # Install Microsoft Edge for the Edge browser run
-      - name: Install Microsoft Edge (only if Edge browser)
-        if: matrix.browser == 'edge'
-        run: |
-          curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-          sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-          sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
-          sudo apt update
-          sudo apt install -y microsoft-edge-stable
-
-      - name: Install dependencies for browsers
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            libgtk2.0-0 \
-            libgtk-3-0 \
-            libgbm-dev \
-            libnotify-dev \
-            libnss3 \
-            libxss1 \
-            xvfb
-
-
-      # Install Node dependencies
-      - name: Install dependencies
-        run: npm ci
-
-      # Print available browsers for debugging
-      - name: Cypress info (browser check)
-        run: npx cypress info
-
-      
-
-      # Run Cypress tests
       - name: Cypress run in ${{ matrix.browser }}
         uses: cypress-io/github-action@v6
         with:
-          browser: ${{ matrix.browser }}
-          # command: npx cypress run --browser ${{ matrix.browser }} --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
+            browser: ${{ matrix.browser }}
+            command: npx cypress run --browser ${{ matrix.browser }} --reporter mochawesome --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
 
-      - name: Run Cypress tests with Xvfb
-        run: |
-          xvfb-run --auto-servernum --server-args='-screen 0 1280x720x24' \
-          npx cypress run --browser ${{ matrix.browser }} --reporter-options reportDir=cypress/reports/${{ matrix.browser }}
-        env:
-          CYPRESS_BROWSER_PATH: ${{ matrix.browser == 'edge' && '/usr/bin/microsoft-edge-stable' || '' }}
-
-
-      # Merge Mochawesome Reports
       - name: Merge Mochawesome Reports
         run: npx mochawesome-merge cypress/reports/${{ matrix.browser }}/*.json > cypress/reports/${{ matrix.browser }}/merged-report.json
 
-      # Generate HTML Report
       - name: Generate HTML Report
         run: npx marge cypress/reports/${{ matrix.browser }}/merged-report.json --reportDir cypress/reports/${{ matrix.browser }} -f "${{ matrix.browser }}-report.html"
 
-      # Upload Report
       - name: Upload HTML Report
         uses: actions/upload-artifact@v4
         with:
