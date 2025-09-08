@@ -18,7 +18,8 @@ jobs:
       - name: Install cypress and verify
         run: |
           npm ci
-          $(npm bin)/cypress verify
+          npm install cypress mochawesome mochawesome-merge mochawesome-report-generator
+          npx cypress verify
       - name: Cypress run in ${{ matrix.browser }}
         uses: cypress-io/github-action@v6
         with:
@@ -36,5 +37,3 @@ jobs:
         with:
           name: Cypress HTML Report ${{ matrix.browser }}
           path: cypress/reports/${{ matrix.browser }}
-
-          # npm install cypress mochawesome mochawesome-merge mochawesome-report-generator
